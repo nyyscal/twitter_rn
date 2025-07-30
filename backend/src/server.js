@@ -27,7 +27,7 @@ app.use("/api/comments",commentRoutes)
 app.use("/api/notifications",notificationRoutes)
 
 //error handling middleware
-app.use((err,req,res)=>{
+app.use((err,req,res,next)=>{
   console.error("Unhandled error:",err)
   res.status(500).json({error:err.message|| "Internal Server Error"})
 })
@@ -46,6 +46,6 @@ const startServer = async()=>{
 
  startServer()
 
- 
+
  //export for vercel
  export default app
