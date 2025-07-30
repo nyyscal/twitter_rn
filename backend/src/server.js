@@ -9,6 +9,7 @@ import notificationRoutes from "./routes/notifications.route.js"
 import { ENV } from "./config/env.js"
 import { connectDB } from "./config/db.js"
 import { arcjetMiddleware } from "./middleware/arcjet.middleware.js"
+import serverless from 'serverless-http';
 
 const app = express()
 
@@ -48,4 +49,4 @@ const startServer = async()=>{
 
 
  //export for vercel
- export default app
+export const handler = serverless(app);
