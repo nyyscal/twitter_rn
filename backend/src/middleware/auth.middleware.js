@@ -1,7 +1,10 @@
-export const protectRoute = async(req,res,next)=>{
-  if(!req.auth().isAuthenticated){
-    //clerk middleware will set req.auth() if the user is authenticated from server.js file
-    return res.status(401).json({message:"Unauthorized - you must be logged in to access this route."})
+import { getAuth } from "@clerk/express";
+
+export const protectRoute = (req, res, next) => {
+  const { userId } = getAuth(req); // ✅ safe and official
+  if (!userId) {
+    return res.status(401).json({ message: "Unauthorized - You must be logged in." });
   }
-  next()
-}
+  req.userId = userId; // you can attach this for use in controllers
+  next();
+};
