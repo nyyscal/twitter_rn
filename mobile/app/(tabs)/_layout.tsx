@@ -25,7 +25,7 @@ const TabLayout = () => {
     >
       <Tabs.Screen name='index' options={{  
         title:" ",
-        tabBarIcon: ({color,size})=><Feather name="home" size={size} color={color}/>
+        tabBarIcon: ({color,size})=><Feather name="home" size={size} color={color}/>,
       }}/>
       <Tabs.Screen name='search' options={{
       title:" ",
