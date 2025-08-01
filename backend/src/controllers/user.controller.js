@@ -21,6 +21,8 @@ export const updateProfile = asyncHandler(async(req,res)=>{
 
 export const syncUser = asyncHandler(async(req,res)=>{
   const {userId} =getAuth(req)
+  console.log("User ID",userId)
+  if(!userId) console.log("No user id found!")
 
   //check if user already exists in database
   const existingUser = await User.findOne({clerkId: userId})
