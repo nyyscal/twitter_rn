@@ -15,7 +15,7 @@ export const getComments = asyncHandler(async(req,res)=>{
 
 export const createComment = asyncHandler(async(req,res)=>{
   const {userId} = getAuth(req)
-  const postId = req.params
+  const {postId} = req.params
   const {content} = req.body
 
   if(!content || content.trim()===""){
