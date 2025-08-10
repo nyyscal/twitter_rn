@@ -48,10 +48,11 @@ export const getUserPosts = asyncHandler(async(req,res)=>{
     .populate({
       path:"comments",
       populate:{
-        paht:"user",
+        path:"user",
         select:"username firstName lastName profilePicture",
       }
     })
+     res.status(200).json({ posts }); 
 })
 
 export const createPost = asyncHandler(async(req,res)=>{
